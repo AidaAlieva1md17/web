@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects by Alieva Aida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #ff6b4a;
+            --accent-hover: #ff8266;
+            --border: #2a2a2a;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --pending: #a78bfa;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 40px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            font-weight: 400;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .meta-value {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 12px;
+        }
+
+        .filter-tag {
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 74, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .project-number {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .project-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-done {
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--success);
+        }
+
+        .status-active {
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--warning);
+        }
+
+        .status-pending {
+            background: rgba(167, 139, 250, 0.1);
+            color: var(--pending);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .project-content {
+            margin-top: 24px;
+        }
+
+        .project-name {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .project-folder {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            margin-bottom: 16px;
+        }
+
+        .project-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 400px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link.primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .project-link.primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-link.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .project-link.secondary:hover {
+            background: var(--border);
+            color: var(--text-primary);
+        }
+
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Project Preview */
+        .project-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            min-height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-muted);
+        }
+
+        .preview-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .preview-text {
+            font-size: 13px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .footer-role {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-indicator:hover {
+            transform: translateY(-4px);
+            background: var(--accent-hover);
+        }
+
+        .scroll-indicator svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .header {
+                padding: 16px 24px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 24px 60px;
+            }
+
+            .hero-meta {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .projects-section {
+                padding: 60px 24px;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+
+            .project-preview {
+                min-height: 200px;
+                order: -1;
+            }
+
+            .project-name {
+                font-size: 22px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+                padding: 40px 24px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .filter-tags {
+                flex-wrap: wrap;
+            }
+
+            .scroll-indicator {
+                bottom: 24px;
+                right: 24px;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Marquee animation for footer */
+        .marquee-container {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+            margin: 40px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 40px;
+            font-size: 14px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Алиева Аида<span>.</span></div>
+        <nav class="nav">
+            <a href="#projects">Проекты</a>
+            <a href="#about">О себе</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Мои <span>проекты</span></h1>
+        <p class="hero-subtitle">Коллекция учебных и практических работ по веб-разработке и дизайну.</p>
+        
+        <div class="hero-meta">
+            <div class="meta-item">
+                <span class="meta-label">Всего проектов</span>
+                <span class="meta-value">5</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Завершено</span>
+                <span class="meta-value">2</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">В работе</span>
+                <span class="meta-value">3</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Группа</span>
+                <span class="meta-value">4 МД 4</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="section-header">
+            <span class="section-title">Все проекты</span>
+            <div class="filter-tags">
+                <span class="filter-tag active">Все</span>
+                <span class="filter-tag">Завершено</span>
+                <span class="filter-tag">В работе</span>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <span class="project-number">01</span>
+                        <div class="project-status status-done">
+                            <span class="status-dot"></span>
+                            <span>Завершено</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-name">Сайт Портфолио</h3>
+                        <p class="project-folder">/portfolio/</p>
+                        <p class="project-desc">Минималистичный сайт для демонстрации работ и проектов.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="./task1_portfolio_Aida" class="project-link primary" target="_blank">
+                            <span>Открыть</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                        <a href="./portfolio-site/" class="project-link secondary" target="_blank">
+                            <span>Папка</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-preview">
+                    <div class="preview-placeholder">
+                        <div class="preview-icon">01</div>
+                        <span class="preview-text">Portfolio Site</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <span class="project-number">02</span>
+                        <div class="project-status status-active">
+                            <span class="status-dot"></span>
+                            <span>В работе</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-name">Дашборд</h3>
+                        <p class="project-folder">/dashboard/</p>
+                        <p class="project-desc">Панель с цифрами и графиками в реальном времени. Анимации данных, интерактивные элементы управления.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="./task2_dashboard" class="project-link primary" target="_blank">
+                            <span>Открыть</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                        <a href="./dashboard/" class="project-link secondary" target="_blank">
+                            <span>Папка</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-preview">
+                    <div class="preview-placeholder">
+                        <div class="preview-icon">02</div>
+                        <span class="preview-text">Dashboard</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <span class="project-number">03</span>
+                        <div class="project-status status-pending">
+                            <span class="status-dot"></span>
+                            <span>В разработке</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-name">Игра</h3>
+                        <p class="project-folder">/game/</p>
+                        <p class="project-desc">Интерактивная игра с динамичным геймплеем и системой достижений. Стилизованная графика и оригинальный саундтрек.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="./task3_game" class="project-link primary" target="_blank">
+                            <span>Открыть</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                        <a href="./game/" class="project-link secondary" target="_blank">
+                            <span>Папка</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-preview">
+                    <div class="preview-placeholder">
+                        <div class="preview-icon">03</div>
+                        <span class="preview-text">Game</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <span class="project-number">04</span>
+                        <div class="project-status status-done">
+                            <span class="status-dot"></span>
+                            <span>Завершено</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-name">Копирование сайта</h3>
+                        <p class="project-folder">/copy-website/</p>
+                        <p class="project-desc">Точная реплика сайта с портфолио. Практика клонирования существующих веб-страниц.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="./task4_site_copy" class="project-link primary" target="_blank">
+                            <span>Открыть</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                        <a href="./copy-website/" class="project-link secondary" target="_blank">
+                            <span>Папка</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-preview">
+                    <div class="preview-placeholder">
+                        <div class="preview-icon">04</div>
+                        <span class="preview-text">Website Clone</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <span class="project-number">05</span>
+                        <div class="project-status status-pending">
+                            <span class="status-dot"></span>
+                            <span>В разработке</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-name">Итоговый проект</h3>
+                        <p class="project-folder">/final/</p>
+                        <p class="project-desc">Сайт портфолио с реализацией Local Storage и фильтрации контента.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="./itog_exam_aida_4md_4" class="project-link primary" target="_blank">
+                            <span>Открыть</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                        <a href="./final-project/" class="project-link secondary" target="_blank">
+                            <span>Папка</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-preview">
+                    <div class="preview-placeholder">
+                        <div class="preview-icon">05</div>
+                        <span class="preview-text">Final Project</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <span class="marquee-item">HTML & CSS</span>
+            <span class="marquee-item">JavaScript</span>
+            <span class="marquee-item">Веб-разработка</span>
+            <span class="marquee-item">UI/UX Дизайн</span>
+            <span class="marquee-item">Портфолио</span>
+            <span class="marquee-item">Интерактив</span>
+            <span class="marquee-item">HTML & CSS</span>
+            <span class="marquee-item">JavaScript</span>
+            <span class="marquee-item">Веб-разработка</span>
+            <span class="marquee-item">UI/UX Дизайн</span>
+            <span class="marquee-item">Портфолио</span>
+            <span class="marquee-item">Интерактив</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-info">
+            <span class="footer-name">Алиева Аида</span>
+            <span class="footer-role">4 МД 4 — Система проектов v2.0</span>
+        </div>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Telegram</a>
+            <a href="#" class="footer-link">GitHub</a>
+            <a href="#" class="footer-link">Email</a>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <div class="scroll-indicator" id="scrollTop">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </div>
+
+    <script>
+        // Scroll to top button visibility
+        const scrollBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Filter tags functionality
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active from all
+                filterTags.forEach(t => t.classList.remove('active'));
+                // Add active to clicked
+                tag.classList.add('active');
+
+                const filter = tag.textContent.toLowerCase();
+
+                projectCards.forEach(card => {
+                    const status = card.querySelector('.project-status');
+                    const statusText = status.textContent.toLowerCase();
+
+                    if (filter === 'все') {
+                        card.style.display = 'grid';
+                    } else if (filter === 'завершено' && statusText.includes('завершено')) {
+                        card.style.display = 'grid';
+                    } else if (filter === 'в работе' && (statusText.includes('в работе') || statusText.includes('в разработке'))) {
+                        card.style.display = 'grid';
+                    } else if (filter !== 'все' && filter !== 'завершено' && filter !== 'в работе') {
+                        card.style.display = 'grid';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
