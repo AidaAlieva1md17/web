@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miracle Dashboard for Aida</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Miracle Dashboard for Aida 🎀</h1>
+        <div class="header-controls">
+            <button id="addWidgetBtn" class="btn-primary">+ Добавить виджет</button>
+            <button id="exportBtn" class="btn-secondary">Экспорт</button>
+            <button id="importBtn" class="btn-secondary">Импорт</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="widgets-grid" id="widgetsGrid">
+            <!-- Виджеты будут добавляться сюда -->
+        </div>
+        
+        <div class="empty-state" id="emptyState">
+            <h2>Нет виджетов</h2>
+            <p>Добавьте первый виджет, чтобы начать работу</p>
+            <button id="addFirstWidget" class="btn-primary">Добавить виджет</button>
+        </div>
+    </main>
+
+    <!-- Модальное окно добавления виджетов -->
+    <div id="widgetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Доступные виджеты</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="widgets-list">
+                <div class="widget-option" data-type="quote">
+                    <h3>📖 Случайная цитата</h3>
+                    <p>Показывает случайные цитаты известных людей</p>
+                </div>
+                <div class="widget-option" data-type="weather">
+                    <h3>🌤️ Погода</h3>
+                    <p>Информация о погоде в выбранном городе</p>
+                </div>
+                <div class="widget-option" data-type="currency">
+                    <h3>💱 Курсы валют</h3>
+                    <p>Актуальные курсы валют ЦБ РФ</p>
+                </div>
+                <div class="widget-option" data-type="joke">
+                    <h3>😄 Случайные шутки</h3>
+                    <p>Свежие шутки на разные темы</p>
+                </div>
+                <!-- Новые виджеты -->
+                <div class="widget-option" data-type="inspiration">
+                    <h3>🎨 Дизайн вдохновение</h3>
+                    <p>Случайные красивые изображения для творчества</p>
+                </div>
+                <div class="widget-option" data-type="colorpalette">
+                    <h3>🎨 Палитра цветов</h3>
+                    <p>Генератор случайных цветовых палитр</p>
+                </div>
+                <div class="widget-option" data-type="threedmodels">
+                    <h3>📦 3D Модели</h3>
+                    <p>Популярные 3D модели с платформы Sketchfab</p>
+                </div>
+                <div class="widget-option" data-type="tarot">
+                    <h3>🔮 Карты Таро</h3>
+                    <p>Случайный расклад с толкованием</p>
+                </div>
+                <div class="widget-option" data-type="memes">
+                    <h3>😂 Случайные мемы</h3>
+                    <p>Свежие мемы с Reddit</p>
+                </div>
+                <div class="widget-option" data-type="coloring">
+                    <h3>🎨 Раскраска</h3>
+                    <p>Терапевтические раскраски для релаксации</p>
+                </div>
+                <div class="widget-option" data-type="snake">
+                    <h3>🐍 Змейка</h3>
+                    <p>Классическая игра змейка</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="settingsTitle">Настройки виджета</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="settings-content" id="settingsContent">
+                <!-- Настройки будут подгружаться динамически -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary close-settings">Отмена</button>
+                <button class="btn-primary save-settings">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение основных скриптов -->
+    <script src="js/api-service.js"></script>
+    <script src="js/dashboard-core.js"></script>
+    <script src="js/widget-manager.js"></script>
+    <script src="js/dashboard.js"></script>
+    
+    <!-- Подключение виджетов -->
+    <script src="js/inspiration-widget.js"></script>
+    <script src="js/color-palette-widget.js"></script>
+    <script src="js/threed-models-widget.js"></script>
+    <script src="js/tarot-widget.js"></script>
+    <script src="js/memes-widget.js"></script>
+    <script src="js/coloring-widget.js"></script>
+    <script src="js/snake-widget.js"></script>
+</body>
+</html>
