@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Mortal Kombat';
+    src: url('../assets/fonts/mortalkombat5.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a12;
+    font-family: 'Mortal Kombat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    color: #e0e0e0;
+}
+
+#gameCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+.game-ui {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+    font-size: 2vw;
+    font-family: 'Mortal Kombat', sans-serif;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #444;
+    font-family: 'Mortal Kombat', sans-serif;
+}
+
+.player1-info .player-name {
+    color: #ff3300;
+    font-weight: bold;
+    font-size: 1.5vw;
+    font-family: 'Mortal Kombat', sans-serif;
+    text-shadow: 0 0 10px rgba(255, 51, 0, 0.7);
+    letter-spacing: 1px;
+}
+
+.player2-info .player-name {
+    color: #0099ff;
+    font-weight: bold;
+    font-size: 1.5vw;
+    font-family: 'Mortal Kombat', sans-serif;
+    text-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+    letter-spacing: 1px;
+}
+
+.health-bar {
+    width: 300px;
+    height: 30px;
+    background: #333;
+    border: 2px solid #555;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.health-fill {
+    height: 100%;
+    background: linear-gradient(to right, #ff3300, #ff6600);
+    transition: width 0.3s;
+    border-radius: 3px;
+}
+
+.player2-info .health-fill {
+    background: linear-gradient(to right, #0099ff, #00ccff);
+}
+
+.health-text {
+    font-size: 1vw;
+    font-weight: bold;
+    color: #fff;
+    font-family: 'Mortal Kombat', sans-serif;
+}
+
+.round-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 2px solid #ff3300;
+    font-family: 'Mortal Kombat', sans-serif;
+}
+
+.round-text {
+    font-size: 1.5vw;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Mortal Kombat', sans-serif;
+    letter-spacing: 1px;
+}
+
+.timer {
+    font-size: 3vw;
+    font-weight: bold;
+    color: #ff3300;
+    text-shadow: 0 0 10px rgba(255, 51, 0, 0.7);
+    font-family: 'Mortal Kombat', sans-serif;
+    letter-spacing: 2px;
+}
+
+.game-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #ff3300;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 0 30px rgba(255, 51, 0, 0.5);
+    min-width: 500px;
+    font-family: 'Mortal Kombat', sans-serif;
+}
+
+.message-title {
+    font-size: 3vw;
+    color: #ff3300;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 51, 0, 0.7);
+    font-family: 'Mortal Kombat', sans-serif;
+    letter-spacing: 2px;
+}
+
+.message-text {
+    font-size: 1.8vw;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    font-family: 'Mortal Kombat', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn {
+    background: linear-gradient(to bottom, #ff3300, #cc2900);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5vw;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Mortal Kombat', sans-serif;
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom, #ff5500, #dd3300);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 51, 0, 0.7);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .game-ui {
+        font-size: 4vw;
+    }
+    
+    .player-info {
+        padding: 5px 10px;
+    }
+    
+    .player1-info .player-name,
+    .player2-info .player-name {
+        font-size: 3vw;
+    }
+    
+    .health-bar {
+        width: 150px;
+        height: 20px;
+    }
+    
+    .health-text {
+        font-size: 2vw;
+    }
+    
+    .round-info {
+        padding: 10px 15px;
+    }
+    
+    .round-text {
+        font-size: 3vw;
+    }
+    
+    .timer {
+        font-size: 5vw;
+    }
+    
+    .game-message {
+        min-width: 90%;
+        padding: 20px;
+    }
+    
+    .message-title {
+        font-size: 6vw;
+    }
+    
+    .message-text {
+        font-size: 4vw;
+    }
+    
+    .btn {
+        font-size: 3vw;
+        padding: 12px 25px;
+    }
+}
