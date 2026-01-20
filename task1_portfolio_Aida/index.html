@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аида - 3D Художник & Графический Дизайнер</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h2>Aida</h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" data-page="home" class="nav-link active">О себе</a></li>
+                    <li><a href="#" data-page="portfolio" class="nav-link">Работы</a></li>
+                    <li><a href="#" data-page="contact" class="nav-link">Навыки & Контакты</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button class="theme-toggle btn btn--secondary btn--sm" aria-label="Переключить тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-menu-btn btn btn--secondary btn--sm">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-content">
+       
+        <section id="home" class="page active">
+   
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Привет, я Аида</h1>
+                            <p class="hero-subtitle">3D Художник & Графический Дизайнер</p>
+                            <p class="hero-description">
+                                Меня зовут Аида. Я учусь в СПбГПУТД на специальности прикладная информатика в дизайне. 
+                                Моё увлечение — графический дизайн и 3D-моделирование. Я стремлюсь создавать 
+                                визуально выразительные и функциональные проекты, которые объединяют 
+                                техническую точность и творческий подход.
+                            </p>
+                            <div class="hero-buttons">
+                                <button class="btn btn--primary" data-page="portfolio">Посмотреть работы</button>
+                                <button class="btn btn--outline" data-page="contact">Связаться со мной</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <div class="avatar">
+                                <img src="https://i.pinimg.com/736x/7f/00/14/7f0014b35ecdf2416597f19a12e6537e.jpg" alt="Аида" class="avatar-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="services-section">
+                <div class="container">
+                    <h2 class="section-title">Что умею</h2>
+                    <div class="services-grid" id="services-container">
+                       
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2 class="about-title">Образование и подход к работе</h2>
+                            <div class="education-info">
+                                <h3 class="education-institution">СПбГПУТД</h3>
+                                <p class="education-degree">Прикладная информатика в дизайне</p>
+                            </div>
+                            <p class="about-paragraph">
+                                Мой подход к работе основан на сочетании технической точности и творческого видения. 
+                                Я верю, что каждый проект должен не только выглядеть красиво, но и решать конкретные задачи.
+                            </p>
+                            <p class="about-paragraph">
+                                В своей работе я использую современные инструменты и техники, постоянно изучаю новые 
+                                тенденции в 3D-графике и дизайне, чтобы создавать актуальные и впечатляющие проекты.
+                            </p>
+                            <p class="development-info">
+                                Время разработки заняла 3 часа. Использовалась нейросеть Perplexity
+                            </p>
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <h3><i class="fas fa-cube"></i></h3>
+                                <p>3D Моделирование</p>
+                            </div>
+                            <div class="stat">
+                                <h3><i class="fas fa-paint-brush"></i></h3>
+                                <p>Графический дизайн</p>
+                            </div>
+                            <div class="stat">
+                                <h3><i class="fas fa-palette"></i></h3>
+                                <p>Текстурирование</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <section id="portfolio" class="page">
+            <div class="container">
+                <div class="portfolio-header">
+                    <h1 class="page-title">Мои работы</h1>
+                    <p class="page-subtitle">Портфолио 3D моделей, персонажей, концептов и текстур</p>
+                </div>
+
+                
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">Все работы</button>
+                    <button class="filter-btn" data-filter="characters">Персонажи</button>
+                    <button class="filter-btn" data-filter="environments">Окружения</button>
+                    <button class="filter-btn" data-filter="concepts">Концепты</button>
+                    <button class="filter-btn" data-filter="textures">Текстуры</button>
+                    <button class="filter-btn" data-filter="objects">Объекты</button>
+                </div>
+
+            
+                <div class="portfolio-grid" id="portfolio-container">
+                 
+                </div>
+            </div>
+        </section>
+
+      
+        <section id="contact" class="page">
+            <div class="container">
+                <div class="contact-header">
+                    <h1 class="page-title">Навыки & Контакты</h1>
+                    <p class="page-subtitle">Мои технические навыки и способы связи</p>
+                </div>
+
+               
+                <div class="skills-section">
+                    <h2 class="section-title">Навыки и инструменты</h2>
+                    <div class="skills-categories">
+                        <div class="skills-category">
+                            <h3 class="skills-category-title">3D & Моделирование</h3>
+                            <div class="skills-list" data-category="3D">
+                            
+                            </div>
+                        </div>
+                        <div class="skills-category">
+                            <h3 class="skills-category-title">Текстурирование & 2D</h3>
+                            <div class="skills-list" data-category="Texturing,2D">
+                                
+                            </div>
+                        </div>
+                        <div class="skills-category">
+                            <h3 class="skills-category-title">Дизайн & Техническое</h3>
+                            <div class="skills-list" data-category="Design,Technical">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3 class="contact-info-title">Связаться со мной</h3>
+                        <p class="contact-info-description">Готова обсудить ваш проект и воплотить ваши идеи в жизнь</p>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>and95lev@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Санкт-Петербург, Россия</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>СПбГПУТД</span>
+                        </div>
+
+                        <div class="social-links" id="social-links">
+                            <a href="https://www.instagram.com/mirakell47/" class="social-link" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" target="_blank" aria-label="Behance">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="https://www.artstation.com/primiksnake9" class="social-link" target="_blank" aria-label="ArtStation">
+                                <i class="fab fa-artstation"></i>
+                            </a>
+                            <a href="https://t.me/@crumbllavri" class="social-link" target="_blank" aria-label="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Имя *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project-type" class="form-label">Тип проекта</label>
+                            <select id="project-type" name="project-type" class="form-control">
+                                <option value="">Выберите тип проекта</option>
+                                <option value="3d-modeling">3D Моделирование</option>
+                                <option value="character-design">Дизайн персонажа</option>
+                                <option value="concept-art">Концепт-арт</option>
+                                <option value="texturing">Текстурирование</option>
+                                <option value="branding">Брендирование</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Описание проекта *</label>
+                            <textarea id="message" name="message" rows="5" class="form-control" placeholder="Расскажите подробнее о вашем проекте..." required></textarea>
+                            <span class="error-message" id="message-error"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            <span class="btn-text">Отправить заявку</span>
+                            <span class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </span>
+                        </button>
+
+                        <div class="form-status" id="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+    <div class="modal hidden" id="project-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
