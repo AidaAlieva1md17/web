@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aida - 3D Художник по персонажам</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="#hero" class="logo">AIDA</a>
+                <ul class="nav-menu">
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1 class="hero_title">ХУДОЖНИК ПО 3D ПЕРСОНАЖАМ</h1>
+                <p>Создаю реалистичных, детализированных персонажей для игр и кино</p>
+                <a href="#portfolio" class="btn">Смотреть работы</a>
+            </div>
+        </section>
+
+        <!-- Portfolio with Filters -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Портфолио</h2>
+                    <p>Фильтруйте проекты по категории, технологии или сложности</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <h3>Категория</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all" data-type="category">Все</button>
+                            <button class="filter-btn" data-filter="3D" data-type="category">3D</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Технологии</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all" data-type="technology">Все</button>
+                            <button class="filter-btn" data-filter="Blender" data-type="technology">Blender</button>
+                            <button class="filter-btn" data-filter="ZBrush" data-type="technology">ZBrush</button>
+                            <button class="filter-btn" data-filter="Substance Painter" data-type="technology">Substance Painter</button>
+                            <button class="filter-btn" data-filter="Photoshop" data-type="technology">Photoshop</button>
+                            <button class="filter-btn" data-filter="Illustrator" data-type="technology">Illustrator</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Сложность</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all" data-type="complexity">Все</button>
+                            <button class="filter-btn" data-filter="Beginner" data-type="complexity">Начинающий</button>
+                            <button class="filter-btn" data-filter="Intermediate" data-type="complexity">Средний</button>
+                            <button class="filter-btn" data-filter="Advanced" data-type="complexity">Продвинутый</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="portfolioGrid">
+                    <!-- Проекты будут вставлены JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Обо мне</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Привет, я Aida</h3>
+                        <p>3D-художник по персонажам, специализируюсь на реалистичных моделях для игр. Студентка СПбГУПТД.</p>
+                        <p>Вдохновляюсь играми Devil May Cry 5, Cyberpunk 2077 и The Witcher.</p>
+                    </div>
+                    <div class="skills">
+                        <h3>Навыки</h3>
+                        <ul>
+                            <li>3D скульптинг</li>
+                            <li>Текстурирование</li>
+                            <li>Анатомия</li>
+                            <li>Game-ready ассеты</li>
+                            <li>Ретопология</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Контакты</h2>
+                    <p>Свяжитесь со мной для сотрудничества</p>
+                </div>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Контактная информация</h3>
+                        <div class="contact-details">
+                            <p><strong>Email:</strong> and95lev@gmail.com</p>
+                            <p><strong>Город:</strong> Санкт-Петербург</p>
+                            <div class="social-links">
+                                <a href="https://t.me/crumbllavri" target="_blank" class="social-btn telegram">
+                                    <span>Telegram</span>
+                                </a>
+                                <a href="https://www.artstation.com/primiksnake9a" target="_blank" class="social-btn artstation">
+                                    <span>ArtStation</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Aida. Все права защищены.</p>
+            <p class="footer-note">Создано с ❤️ и кодом</p>
+        </div>
+    </footer>
+
+    <!-- Шаблон карточки проекта -->
+    <template id="project-card-template">
+      <div class="project-card">
+        <div class="project-image">
+          <!-- Изображение будет вставлено сюда -->
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-title"></h3>
+            <span class="category"></span>
+          </div>
+          <p class="description"></p>
+          <div class="tech-tags"></div>
+          <span class="complexity"></span>
+        </div>
+      </div>
+    </template>
+
+    <!-- Данные проектов -->
+    <script type="application/json" id="projectsData">
+        [
+            {
+                "id": 1,
+                "title": "Концепт арт персонажа для диплома",
+                "category": "3D",
+                "technologies": ["Photoshop"],
+                "complexity": "Advanced",
+                "description": "Реалистичный персонаж для диплома",
+                "image": "images/img1.png"
+            },
+            {
+                "id": 2,
+                "title": "Концепт-арт персонажа в полный рост для диплома",
+                "category": "3D",
+                "technologies": ["Photoshop"],
+                "complexity": "Advanced",
+                "description": "Реалистичный персонаж для диплома",
+                "image": "images/img2.png"
+            },
+            {
+                "id": 3,
+                "title": "Стилизованный персонаж, эльфийка",
+                "category": "3D",
+                "technologies": ["Blender"],
+                "complexity": "Intermediate",
+                "description": "Стилизованный женский персонаж",
+                "image": "images/img3.png"
+            },
+            {
+                "id": 4,
+                "title": "3D Бургер",
+                "category": "3D",
+                "technologies": ["Blender", "Photoshop"],
+                "complexity": "Beginner",
+                "description": "Создание 3D Kawaii бургер по туториалу",
+                "image": "images/img4.png"
+            },
+            {
+                "id": 5,
+                "title": "Дизайн уточек",
+                "category": "3D",
+                "technologies": ["Blender", "ZBrush"],
+                "complexity": "Beginner",
+                "description": "Уточки были созданы по туториалу",
+                "image": "images/img5.png"
+            },
+            {
+                "id": 6,
+                "title": "Персонаж покемон",
+                "category": "3D",
+                "technologies": ["ZBrush", "Marmoset"],
+                "complexity": "Intermediate",
+                "description": "Детализированная модель персонажа покемона",
+                "image": "images/img6.png"
+            },
+            {
+                "id": 7,
+                "title": "Блинчики",
+                "category": "3D",
+                "technologies": ["Photoshop", "Blender"],
+                "complexity": "Beginner",
+                "description": "Выполнен по туториалу",
+                "image": "images/img7.png"
+            },
+            {
+                "id": 8,
+                "title": "Магазин зайчика",
+                "category": "3D",
+                "technologies": ["Blender", "Photoshop"],
+                "complexity": "Beginner",
+                "description": "Выполнен по туториалу",
+                "image": "images/img8.png"
+            },
+            {
+                "id": 9,
+                "title": "Кофейня",
+                "category": "3D",
+                "technologies": ["Blender"],
+                "complexity": "Beginner",
+                "description": "Концепт-арт для новой игры",
+                "image": "images/img9.png"
+            },
+            {
+                "id": 10,
+                "title": "Комната",
+                "category": "3D",
+                "technologies": ["Blender"],
+                "complexity": "Beginner",
+                "description": "Дизайн уникальной комнаты по туториалу",
+                "image": "images/img10.png"
+            },
+            {
+                "id": 11,
+                "title": "Портрет",
+                "category": "3D",
+                "technologies": ["ZBrush"],
+                "complexity": "Advanced",
+                "description": "Скульптинг лица",
+                "image": "images/a1.jpg"
+            },
+            {
+                "id": 12,
+                "title": "3D зайчик",
+                "category": "3D",
+                "technologies": ["Photoshop", "Blender"],
+                "complexity": "Beginner",
+                "description": "Мультяшный зайчик",
+                "image": "images/img12.png"
+            }
+            
+        ]
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
